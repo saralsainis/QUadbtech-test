@@ -1,0 +1,20 @@
+Q3. Given a string of words, implement a function that returns the shortest word in the string.
+
+
+
+
+fn find_shortest_word(sentence: &str) -> Option<&str> {
+    let mut words: Vec<&str> = sentence.split_whitespace().collect();
+    words.sort_by_key(|word| word.len()); 
+
+    words.first().cloned() 
+}
+
+fn main() {
+    let input_sentence = "saral saini is the fastest learner";
+    if let Some(shortest) = find_shortest_word(input_sentence) {
+        println!("The shortest word is: {}", shortest);
+    } else {
+        println!("No words found in the sentence.");
+    }
+}
